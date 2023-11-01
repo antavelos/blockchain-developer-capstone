@@ -41,7 +41,7 @@ let proof = {
 contract('Zokrates Verifier Tests', async (accounts) => {
   const account = accounts[0];
 
-  it(`should verify the tx`, async function () {
+  it(`should verify the tx`, async () => {
     const verifier = await SquareVerifier.deployed();
 
     const result = await verifier.verifyTx(proof.proof, proof.inputs, { from: accounts[0] })
@@ -49,7 +49,7 @@ contract('Zokrates Verifier Tests', async (accounts) => {
     assert.isTrue(result, "Should be verified");
   });
 
-  it(`should not verify the tx when proof is invalid`, async function () {
+  it(`should not verify the tx when proof is invalid`, async () => {
     const verifier = await SquareVerifier.deployed();
 
     // invalidating proof
@@ -62,7 +62,7 @@ contract('Zokrates Verifier Tests', async (accounts) => {
     assert.isFalse(result, "Should not be verified");
   });
 
-  it(`should not verify the tx when input is not correct`, async function () {
+  it(`should not verify the tx when input is not correct`, async () => {
     const verifier = await SquareVerifier.deployed();
 
     // invalidating input

@@ -15,8 +15,8 @@ contract('TestCapstoneRealEstate', async (accounts) => {
     const account3 = accounts[3];
     const emptyAccount = "0x0000000000000000000000000000000000000000";
     const tokens = [1, 2, 3, 4, 5];
-    const tokenName = "Capstone"
-    const tokenSymbol = "CAP"
+    const tokenName = "Capstone Real Estate"
+    const tokenSymbol = "CRS"
     const baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/"
 
     describe("contract ownership", async () => {
@@ -81,7 +81,7 @@ contract('TestCapstoneRealEstate', async (accounts) => {
         // token uri should be complete i.e: https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1
         it('should return token uri', async () => {
             const token = tokens[0];
-            const tokenUri = await this.contract.getTokenURI(token);
+            const tokenUri = await this.contract.tokenURI(token);
             assert.equal(tokenUri, `${baseTokenURI}${token}`);
         });
 
@@ -306,7 +306,7 @@ contract('TestCapstoneRealEstate', async (accounts) => {
             const tokenOwner = await this.contract.ownerOf(token);
             assert.equal(tokenOwner, mintTo);
 
-            const tokenURI = await this.contract.getTokenURI(token);
+            const tokenURI = await this.contract.tokenURI(token);
             assert.equal(tokenURI, `${baseTokenURI}${token}`);
 
             const balance = await this.contract.balanceOf(mintTo);

@@ -572,10 +572,6 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
         _tokenURIs[tokenId] = strConcat(_baseTokenURI, tokenIdStr);
     }
-
-    function getTokenURI(uint256 tokenId) public view returns (string memory) {
-        return _tokenURIs[tokenId];
-    }
 }
 
 //  TODO's: Create CustomERC721Token contract that inherits from the ERC721Metadata contract. You can name this contract as you please
@@ -597,7 +593,6 @@ contract CapstoneRealEstate is ERC721Metadata {
     function mint(
         address to,
         uint256 tokenId
-        // string memory tokenURI
     )
         public
         onlyOwner
