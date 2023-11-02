@@ -23,6 +23,8 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const {PROJECT_ID, MNEMONIC} = process.env;
 
 module.exports = {
   /**
@@ -48,6 +50,15 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
      },
 
+     sepolia: {
+      provider: () => new HDWalletProvider(MNEMONIC, `https://sepolia.infura.io/v3/${PROJECT_ID}`),
+      network_id: 11155111,
+      gas: 4465030,
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      networkCheckTimeout: 1000000,
+
+      skipDryRun: true
+    }
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port

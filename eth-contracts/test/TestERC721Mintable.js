@@ -198,7 +198,6 @@ contract('TestCapstoneRealEstate', async (accounts) => {
             assert.equal(errorMessage, "'to' is not a valid address");
         });
 
-        // TODO: do the same with approval
         it('should transfer token from one owner to another', async () => {
             const token = tokens[0];
             const oldTokenOwner = account1;

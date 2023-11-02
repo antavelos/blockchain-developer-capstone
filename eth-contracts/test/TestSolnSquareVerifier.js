@@ -121,7 +121,6 @@ contract('TestSolnSquareVerifier', async (accounts) => {
       assert.equal(await this.contract.totalSupply(), 1);
       assert.equal(await this.contract.balanceOf(submitter), 1);
 
-
       const events = await this.contract.getPastEvents('SolutionAdded')
       assert.equal(events.length, 1);
       assert.equal(events[0].returnValues['submitter'], submitter);
